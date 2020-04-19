@@ -1,0 +1,45 @@
+orders-list:
+  name: ${self:custom.funcPrefix}-orders-list
+  handler: src/api/shops/orders/index.list
+  events:
+  - http:
+      path: shops/{id}/orders
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+orders-post:
+  name: ${self:custom.funcPrefix}-orders-post
+  handler: src/api/shops/orders/index.post
+  events:
+  - http:
+      path: shops/{id}/orders
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+orders-patch:
+  name: ${self:custom.funcPrefix}-orders-patch
+  handler: src/api/shops/orders/index.patch
+  events:
+  - http:
+      path: shops/{id}/orders/{orderId}
+      method: patch
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+orders-get:
+  name: ${self:custom.funcPrefix}-orders-get
+  handler: src/api/shops/orders/index.get
+  events:
+  - http:
+      path: shops/{id}/orders/{orderId}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+orders-del:
+  name: ${self:custom.funcPrefix}-orders-del
+  handler: src/api/shops/orders/index.del
+  events:
+  - http:
+      path: shops/{id}/orders/{orderId}
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}

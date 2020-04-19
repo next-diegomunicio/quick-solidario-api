@@ -1,0 +1,39 @@
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName : ${self:custom.resources.${self:provider.stage}.bucketPrivate}
+      PublicAccessBlockConfiguration:
+        BlockPublicPolicy: TRUE
+      CorsConfiguration:
+        CorsRules:
+        - AllowedOrigins:
+          - '*'
+          AllowedHeaders:
+          - '*'
+          AllowedMethods:
+          - GET
+          - PUT
+          - POST
+          - DELETE
+          - HEAD
+          MaxAge: 3000
+  S3PublicBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicPolicy: TRUE
+      BucketName: ${self:custom.resources.${self:provider.stage}.bucketPublic}
+      CorsConfiguration:
+        CorsRules:
+        - AllowedOrigins:
+          - '*'
+          AllowedHeaders:
+          - '*'
+          AllowedMethods:
+          - GET
+          - PUT
+          - POST
+          - DELETE
+          - HEAD
+          MaxAge: 3000

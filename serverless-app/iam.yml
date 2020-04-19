@@ -1,0 +1,12 @@
+- Effect: Allow
+  Action:
+  - s3:*
+  Resource: "*"
+  # - arn:aws:s3:::${self:custom.resources.${self:provider.stage}.bucketPublic}
+  # - arn:aws:s3:::${self:custom.resources.${self:provider.stage}.bucketPrivate}
+- Effect: Allow
+  Action:
+  - dynamodb:*
+  Resource:
+  - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.resources.${self:provider.stage}.shopsTable}*
+  - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.resources.${self:provider.stage}.pendingShopsTable}*

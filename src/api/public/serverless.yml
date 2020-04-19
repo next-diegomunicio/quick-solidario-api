@@ -1,0 +1,24 @@
+public-shops-list:
+  name: ${self:custom.funcPrefix}-public-shops-list
+  handler: src/api/public/shops.list
+  events:
+  - http:
+      path: ${self:custom.publicApiPrefix}/shops
+      method: get
+      cors: true
+public-shops-post:
+  name: ${self:custom.funcPrefix}-public-shops-post
+  handler: src/api/public/shops.post
+  events:
+  - http:
+      path: ${self:custom.publicApiPrefix}/shops
+      method: post
+      cors: true
+public-shops-check-slug:
+  name: ${self:custom.funcPrefix}-public-shops-check-slug
+  handler: src/api/public/shops.checkSlug
+  events:
+  - http:
+      path: ${self:custom.publicApiPrefix}/shops/{id}/check
+      method: get
+      cors: true

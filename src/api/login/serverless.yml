@@ -1,0 +1,17 @@
+login:
+  name: ${self:custom.funcPrefix}-login
+  handler: src/api/login/index.login
+  events:
+  - http:
+      path: login
+      method: post
+      cors: true
+login-me:
+  name: ${self:custom.funcPrefix}-login-me
+  handler: src/api/login/index.me
+  events:
+  - http:
+      path: login/me
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic} # solo si queremos que sea una funcion con autenticacion

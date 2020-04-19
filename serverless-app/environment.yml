@@ -1,0 +1,10 @@
+STAGE: ${self:provider.stage}
+REGION: ${self:custom.region}
+BUCKET_PUBLIC: ${self:custom.resources.${self:provider.stage}.bucketPublic}
+BUCKET_PRIVATE: ${self:custom.resources.${self:provider.stage}.bucketPrivate}
+TABLE_SHOPS: ${self:custom.resources.${self:provider.stage}.shopsTable}
+TABLE_SHOPS_PENDING: ${self:custom.resources.${self:provider.stage}.pendingShopsTable}
+AUTH_GOOGLE_LOGIN_CLIENT: ${self:custom.secrets.${self:provider.stage}.AUTH_GOOGLE_LOGIN_CLIENT}
+AUTH_SECRET: ${self:custom.secrets.${self:provider.stage}.AUTH_SECRET}
+AUTH_DURATION: ${self:custom.secrets.${self:provider.stage}.AUTH_DURATION}
+VALID_DOMAINS: ${self:custom.domains.${self:provider.stage}}

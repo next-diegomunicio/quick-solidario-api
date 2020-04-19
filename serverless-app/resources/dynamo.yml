@@ -1,0 +1,49 @@
+Resources:
+  ShopsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      TableName: ${self:custom.resources.${self:provider.stage}.shopsTable}
+      AttributeDefinitions:
+      - AttributeName: "id"
+        AttributeType: "S"
+      - AttributeName: "country"
+        AttributeType: "S"
+      - AttributeName: "cp"
+        AttributeType: "N"
+      KeySchema:
+      - AttributeName: "id"
+        KeyType: "HASH"
+      GlobalSecondaryIndexes:
+      - IndexName: "cnIn"
+        KeySchema:
+        - AttributeName: "country"
+          KeyType: "HASH"
+        - AttributeName: "cp"
+          KeyType: "RANGE"
+        Projection:
+          ProjectionType: "ALL"
+  PendingShopsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      TableName: ${self:custom.resources.${self:provider.stage}.pendingShopsTable}
+      AttributeDefinitions:
+      - AttributeName: "id"
+        AttributeType: "S"
+      - AttributeName: "country"
+        AttributeType: "S"
+      - AttributeName: "cp"
+        AttributeType: "N"
+      KeySchema:
+      - AttributeName: "id"
+        KeyType: "HASH"
+      GlobalSecondaryIndexes:
+      - IndexName: "cnIn"
+        KeySchema:
+        - AttributeName: "country"
+          KeyType: "HASH"
+        - AttributeName: "cp"
+          KeyType: "RANGE"
+        Projection:
+          ProjectionType: "ALL"

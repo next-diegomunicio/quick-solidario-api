@@ -1,0 +1,52 @@
+{
+  "name": "quick-solidario-api",
+  "version": "1.0.0",
+  "description": "API Serverless",
+  "private": false,
+  "author": "BBVA Next Technologies",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run local",
+    "local": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless offline",
+    "deploy:local": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless deploy --stage dev",
+    "remove:dev": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless remove --stage dev",
+    "deploy:dev": "AWS_SDK_LOAD_CONFIG=true serverless deploy --stage dev",
+    "sam:dev": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless sam export --output ./sam-template.yml --stage dev",
+    "deploy:production": "AWS_SDK_LOAD_CONFIG=true serverless deploy --stage production",
+    "test-local-server": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless offline --port 3000",
+    "test": "jest",
+    "test-ci": "node ./src/testing/jest.js"
+  },
+  "dependencies": {
+    "aws-sdk": "latest",
+    "dynamodb": "^1.2.1",
+    "google-auth-library": "latest",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "latest",
+    "lodash": "latest",
+    "module-alias": "latest",
+    "ordered-uuid": "^1.1.0",
+    "uuid": "latest",
+    "videoshow": "^0.1.12",
+    "xss": "^1.0.6"
+  },
+  "devDependencies": {
+    "get-urls": "latest",
+    "jest": "latest",
+    "jest-cli": "latest",
+    "jest-dev-server": "latest",
+    "serverless": "latest",
+    "serverless-offline": "latest",
+    "serverless-pseudo-parameters": "^2.5.0"
+  },
+  "jest": {
+    "verbose": true,
+    "globalSetup": "./src/testing/global-setup.js",
+    "globalTeardown": "./src/testing/global-teardown.js"
+  },
+  "_moduleAliases": {
+    "lib": "src/lib",
+    "model": "src/models",
+    "app": "src/lib/app"
+  }
+}

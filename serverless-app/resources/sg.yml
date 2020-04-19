@@ -1,0 +1,14 @@
+Resources:
+  LambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      Tags:
+      - Key: Name
+        Value: ${self:service}-${self:provider.stage}-sg
+      GroupName: ${self:service}-${self:provider.stage}-sg
+      GroupDescription: Allow all outbound traffic, no inbound
+      SecurityGroupIngress:
+      - IpProtocol: -1
+        CidrIp: 127.0.0.1/32
+      VpcId:
+        Ref: Vpc

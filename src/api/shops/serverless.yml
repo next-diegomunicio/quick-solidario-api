@@ -1,0 +1,63 @@
+shops-list:
+  name: ${self:custom.funcPrefix}-shops-list
+  handler: src/api/shops/index.list
+  events:
+  - http:
+      path: shops
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.admin}
+shops-put:
+  name: ${self:custom.funcPrefix}-shops-put
+  handler: src/api/shops/index.put
+  events:
+  - http:
+      path: shops/{id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer.admin}
+shops-patch:
+  name: ${self:custom.funcPrefix}-shops-patch
+  handler: src/api/shops/index.patch
+  events:
+  - http:
+      path: shops/{id}
+      method: patch
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+shops-activate:
+  name: ${self:custom.funcPrefix}-shops-activate
+  handler: src/api/shops/index.activate
+  events:
+  - http:
+      path: shops/{id}/activate
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer.admin}
+shops-get:
+  name: ${self:custom.funcPrefix}-shops-get
+  handler: src/api/shops/index.get
+  events:
+  - http:
+      path: shops/{id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+shops-delete:
+  name: ${self:custom.funcPrefix}-shops-delete
+  handler: src/api/shops/index.del
+  events:
+  - http:
+      path: shops/{id}
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer.basic} #puedo borrar mi tienda
+shops-upload-logo:
+  name: ${self:custom.funcPrefix}-shops-upload-logo
+  handler: src/api/shops/index.logoUrl
+  events:
+  - http:
+      path: shops/{id}/logo-url
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}

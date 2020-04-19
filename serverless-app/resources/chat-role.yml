@@ -1,0 +1,27 @@
+Resources:
+  chatRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ${self:custom.resources.${self:provider.stage}.chatRole}
+      Path: /
+      Policies:
+      - PolicyName: ${self:custom.resources.${self:provider.stage}.chatPolicy}
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - iot:Connect
+                - iot:Subscribe
+                - iot:Publish
+                - iot:Receive
+              # Resource: arn:aws:iot:#{AWS::Region}:#{AWS::AccountId}:topic/${self:custom.resources.${self:provider.stage}.chatTopic}
+              Resource: "*"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::#{AWS::AccountId}:root
+            Action:
+              - sts:AssumeRole

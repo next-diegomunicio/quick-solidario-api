@@ -1,0 +1,5 @@
+securityGroupIds:
+- Ref: LambdaSecurityGroup
+subnetIds:
+- Ref: PrivateSubnet1
+- Ref: PrivateSubnet2

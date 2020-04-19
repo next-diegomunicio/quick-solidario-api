@@ -1,0 +1,38 @@
+funcPrefix: ${self:service}-${self:provider.stage}
+region: us-east-1
+publicApiPrefix: api
+secrets:
+  dev: ${ssm:/aws/reference/secretsmanager/${self:service.name}-${self:provider.stage}~true}
+  pro: ${ssm:/aws/reference/secretsmanager/${self:service.name}-${self:provider.stage}~true}
+  local: ${ssm:/aws/reference/secretsmanager/${self:service.name}-${self:provider.stage}~true}
+deployment:
+  bucket: next-mx-serverless-deploys
+  folder: ${self:service}-${self:provider.stage}
+resources:
+  dev:
+    bucketPublic: ${self:service}-${self:provider.stage}-public
+    bucketPrivate: ${self:service}-${self:provider.stage}-private
+    shopsTable: ${self:service}-${self:provider.stage}-shop
+    pendingShopsTable: ${self:service}-${self:provider.stage}-pending-shop
+  local:
+    bucketPublic: ${self:service}-dev-public
+    bucketPrivate: ${self:service}-dev-private
+    shopsTable: ${self:service}-dev-shop
+    pendingShopsTable: ${self:service}-dev-pending-shop
+authorizer:
+  basic:
+    name: auth-basic
+    type: token
+    identitySource: method.request.header.Authorization
+    identityValidationExpression: Bearer (.*)
+    resultTtlInSeconds: 0
+  admin:
+    name: auth-admin
+    type: token
+    identitySource: method.request.header.Authorization
+    identityValidationExpression: Bearer (.*)
+    resultTtlInSeconds: 0
+domains:
+  local: ""
+  dev: "https://emoji.bbvanext.tech"
+  pro: "https://emoji.bbvanext.tech"

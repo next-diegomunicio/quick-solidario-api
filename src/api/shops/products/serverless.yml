@@ -1,0 +1,54 @@
+products-list:
+  name: ${self:custom.funcPrefix}-products-list
+  handler: src/api/shops/products/index.list
+  events:
+  - http:
+      path: shops/{id}/products
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+products-post:
+  name: ${self:custom.funcPrefix}-products-post
+  handler: src/api/shops/products/index.post
+  events:
+  - http:
+      path: shops/{id}/products
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+products-put:
+  name: ${self:custom.funcPrefix}-products-put
+  handler: src/api/shops/products/index.put
+  events:
+  - http:
+      path: shops/{id}/products/{productId}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+products-get:
+  name: ${self:custom.funcPrefix}-products-get
+  handler: src/api/shops/products/index.get
+  events:
+  - http:
+      path: shops/{id}/products/{productId}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+products-del:
+  name: ${self:custom.funcPrefix}-products-del
+  handler: src/api/shops/products/index.del
+  events:
+  - http:
+      path: shops/{id}/products/{productId}
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}
+products-upload-image:
+  name: ${self:custom.funcPrefix}-products-upload-logo
+  handler: src/api/shops/products/index.imageUrl
+  events:
+  - http:
+      path: shops/{id}/products/{productId}/image-url
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer.basic}

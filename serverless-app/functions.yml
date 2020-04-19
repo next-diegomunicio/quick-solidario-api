@@ -1,0 +1,6 @@
+- ${file(./src/api/login/serverless.yml)}
+- ${file(./src/api/public/serverless.yml)}
+- ${file(./src/api/shops/products/serverless.yml)}
+- ${file(./src/api/shops/orders/serverless.yml)}
+- ${file(./src/api/shops/serverless.yml)}
+- ${file(./src/functions/auth/serverless.yml)}
