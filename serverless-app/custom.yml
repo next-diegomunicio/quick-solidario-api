@@ -1,12 +1,12 @@
 funcPrefix: ${self:service}-${self:provider.stage}
-region: us-east-1
+region: eu-west-1
 publicApiPrefix: api
 secrets:
   dev: ${ssm:/aws/reference/secretsmanager/${self:service.name}-${self:provider.stage}~true}
   pro: ${ssm:/aws/reference/secretsmanager/${self:service.name}-${self:provider.stage}~true}
   local: ${ssm:/aws/reference/secretsmanager/${self:service.name}-${self:provider.stage}~true}
 deployment:
-  bucket: next-mx-serverless-deploys
+  bucket: next-serverless-deployments
   folder: ${self:service}-${self:provider.stage}
 resources:
   dev:
@@ -19,6 +19,11 @@ resources:
     bucketPrivate: ${self:service}-dev-private
     shopsTable: ${self:service}-dev-shop
     pendingShopsTable: ${self:service}-dev-pending-shop
+  pro:
+    bucketPublic: ${self:service}-pro-public
+    bucketPrivate: ${self:service}-pro-private
+    shopsTable: ${self:service}-pro-shop
+    pendingShopsTable: ${self:service}-pro-pending-shop
 authorizer:
   basic:
     name: auth-basic
@@ -35,4 +40,4 @@ authorizer:
 domains:
   local: ""
   dev: "https://emoji.bbvanext.tech"
-  pro: "https://emoji.bbvanext.tech"
+  pro: "https://superadistancia.com"

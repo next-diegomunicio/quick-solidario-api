@@ -12,7 +12,7 @@
     "remove:dev": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless remove --stage dev",
     "deploy:dev": "AWS_SDK_LOAD_CONFIG=true serverless deploy --stage dev",
     "sam:dev": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless sam export --output ./sam-template.yml --stage dev",
-    "deploy:production": "AWS_SDK_LOAD_CONFIG=true serverless deploy --stage production",
+    "deploy:pro": "AWS_SDK_LOAD_CONFIG=true serverless deploy --stage pro",
     "test-local-server": "AWS_SDK_LOAD_CONFIG=true AWS_PROFILE=demo serverless offline --port 3000",
     "test": "jest",
     "test-ci": "node ./src/testing/jest.js"
